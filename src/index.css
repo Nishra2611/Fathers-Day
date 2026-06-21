@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FDFBF7;
+  --color-beige: #F5EFEB;
+  --color-softOrange: #FCD2A8;
+  --color-brown: #8B5A2B;
+  --color-gold: #F4B942;
+  --color-darkBrown: #4A3728;
+  --font-sans: 'Nunito', sans-serif;
+}
+
+body {
+  @apply bg-cream text-darkBrown font-sans antialiased overflow-hidden selection:bg-softOrange;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar to match the theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FDFBF7; 
+}
+::-webkit-scrollbar-thumb {
+  background: #FCD2A8; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F4B942; 
+}
