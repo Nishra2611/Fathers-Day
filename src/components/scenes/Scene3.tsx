@@ -17,13 +17,13 @@ const BALLOON_COLORS = [
 
 const REWARDS = [
   "You're the best dad in the universe!",
-  "Dad Joke: Why did the scarecrow win an award? Because he was outstanding in his field!",
-  "Memory: Remember that time we got lost but found the best ice cream place?",
-  "Dad Joke: I only know 25 letters of the alphabet. I don't know y.",
+  "Advice: You can buy me Kinder joy anytime",
+  "I love you 5000!",
+  "Joke: I only know 25 letters of the alphabet. I don't know y.",
   "You are my hero and my role model!",
-  "Dad Joke: What do you call a fake noodle? An impasta.",
+  "Fun Fact: You're my favorite superhero, even without a cape.",
   "Thank you for always being there for me.",
-  "Dad Joke: I would avoid the sushi if I was you. It’s a little fishy."
+  "King of Chole Bhature officially crowned!"
 ];
 
 const Scene3 = () => {

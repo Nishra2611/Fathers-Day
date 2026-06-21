@@ -203,7 +203,7 @@ const Scene2 = () => {
         {/* Scrolling World */}
         <div
           className={`absolute inset-0 transition-transform duration-75 ${keys.left || keys.right ? 'blur-[1px]' : ''}`}
-          style={{ transform: `translateX(${-player.x + 300}px)` }} // Camera offset
+          style={{ transform: `translateX(calc(50% - ${player.x}px))` }} // Center camera on player
         >
           {/* Ground */}
           <div className="absolute bottom-0 w-[4000px] h-10 bg-[#228B22]" />
@@ -318,50 +318,53 @@ const Scene2 = () => {
         )}
       </AnimatePresence>
 
-      {/* 4 Directional Controls for Both PC and Mobile */}
-      <div className="absolute bottom-6 right-6 flex flex-col items-center z-50 pointer-events-none scale-90 md:scale-100 opacity-80 hover:opacity-100 transition-opacity">
+      {/* Mobile & PC Controls: Separated for better ergonomics */}
+      {/* Left/Down/Right on bottom-left */}
+      <div className="absolute bottom-6 left-6 flex space-x-2 z-50 pointer-events-none scale-90 md:scale-100 opacity-80 hover:opacity-100 transition-opacity">
+        <button
+          onMouseDown={(e) => { e.preventDefault(); handleTouchStart('left'); }}
+          onMouseUp={(e) => { e.preventDefault(); handleTouchEnd('left'); }}
+          onMouseLeave={(e) => { e.preventDefault(); handleTouchEnd('left'); }}
+          onTouchStart={(e) => { e.preventDefault(); handleTouchStart('left'); }}
+          onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('left'); }}
+          className="w-14 h-14 bg-white/90 rounded-xl shadow-xl flex items-center justify-center text-brown border-2 border-orange-200 active:bg-orange-100 pointer-events-auto"
+        >
+          <ArrowLeft size={32} />
+        </button>
+        <button
+          onMouseDown={(e) => { e.preventDefault(); handleTouchStart('down'); }}
+          onMouseUp={(e) => { e.preventDefault(); handleTouchEnd('down'); }}
+          onMouseLeave={(e) => { e.preventDefault(); handleTouchEnd('down'); }}
+          onTouchStart={(e) => { e.preventDefault(); handleTouchStart('down'); }}
+          onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('down'); }}
+          className="w-14 h-14 bg-white/90 rounded-xl shadow-xl flex items-center justify-center text-brown border-2 border-orange-200 active:bg-orange-100 pointer-events-auto"
+        >
+          <ArrowDown size={32} />
+        </button>
+        <button
+          onMouseDown={(e) => { e.preventDefault(); handleTouchStart('right'); }}
+          onMouseUp={(e) => { e.preventDefault(); handleTouchEnd('right'); }}
+          onMouseLeave={(e) => { e.preventDefault(); handleTouchEnd('right'); }}
+          onTouchStart={(e) => { e.preventDefault(); handleTouchStart('right'); }}
+          onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('right'); }}
+          className="w-14 h-14 bg-white/90 rounded-xl shadow-xl flex items-center justify-center text-brown border-2 border-orange-200 active:bg-orange-100 pointer-events-auto"
+        >
+          <ArrowRight size={32} />
+        </button>
+      </div>
+
+      {/* Up/Jump on bottom-right */}
+      <div className="absolute bottom-6 right-6 z-50 pointer-events-none scale-90 md:scale-100 opacity-80 hover:opacity-100 transition-opacity">
         <button
           onMouseDown={(e) => { e.preventDefault(); handleTouchStart('up'); }}
           onMouseUp={(e) => { e.preventDefault(); handleTouchEnd('up'); }}
           onMouseLeave={(e) => { e.preventDefault(); handleTouchEnd('up'); }}
           onTouchStart={(e) => { e.preventDefault(); handleTouchStart('up'); }}
           onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('up'); }}
-          className="w-14 h-14 bg-white/90 rounded-xl shadow-xl flex items-center justify-center text-brown border-2 border-orange-200 active:bg-orange-100 pointer-events-auto mb-2"
+          className="w-16 h-16 bg-white/90 rounded-full shadow-xl flex items-center justify-center text-brown border-2 border-orange-200 active:bg-orange-100 pointer-events-auto"
         >
-          <ArrowUp size={32} />
+          <ArrowUp size={36} />
         </button>
-        <div className="flex space-x-2 pointer-events-auto">
-          <button
-            onMouseDown={(e) => { e.preventDefault(); handleTouchStart('left'); }}
-            onMouseUp={(e) => { e.preventDefault(); handleTouchEnd('left'); }}
-            onMouseLeave={(e) => { e.preventDefault(); handleTouchEnd('left'); }}
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('left'); }}
-            onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('left'); }}
-            className="w-14 h-14 bg-white/90 rounded-xl shadow-xl flex items-center justify-center text-brown border-2 border-orange-200 active:bg-orange-100"
-          >
-            <ArrowLeft size={32} />
-          </button>
-          <button
-            onMouseDown={(e) => { e.preventDefault(); handleTouchStart('down'); }}
-            onMouseUp={(e) => { e.preventDefault(); handleTouchEnd('down'); }}
-            onMouseLeave={(e) => { e.preventDefault(); handleTouchEnd('down'); }}
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('down'); }}
-            onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('down'); }}
-            className="w-14 h-14 bg-white/90 rounded-xl shadow-xl flex items-center justify-center text-brown border-2 border-orange-200 active:bg-orange-100"
-          >
-            <ArrowDown size={32} />
-          </button>
-          <button
-            onMouseDown={(e) => { e.preventDefault(); handleTouchStart('right'); }}
-            onMouseUp={(e) => { e.preventDefault(); handleTouchEnd('right'); }}
-            onMouseLeave={(e) => { e.preventDefault(); handleTouchEnd('right'); }}
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('right'); }}
-            onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('right'); }}
-            className="w-14 h-14 bg-white/90 rounded-xl shadow-xl flex items-center justify-center text-brown border-2 border-orange-200 active:bg-orange-100"
-          >
-            <ArrowRight size={32} />
-          </button>
-        </div>
       </div>
 
       {/* Polaroid Modal */}

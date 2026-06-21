@@ -285,15 +285,15 @@ const Scene1 = () => {
         <AnimatePresence>
           {!candlesOut && (
             <motion.div 
-              exit={{ opacity: 0, y: 20 }}
-              className="absolute bottom-10 flex flex-col items-center space-y-3 z-50"
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-10 flex flex-col items-center space-y-3 z-50 px-4 w-full"
             >
-              <div className="bg-white/95 backdrop-blur px-8 py-4 rounded-full shadow-2xl text-brown font-bold flex items-center space-x-3 animate-bounce border-2 border-softOrange">
+              <div className="bg-white/95 backdrop-blur px-6 md:px-8 py-3 md:py-4 rounded-full shadow-2xl text-brown font-bold flex items-center justify-center space-x-3 animate-bounce border-2 border-softOrange text-center max-w-sm md:max-w-md">
                 <span className="text-2xl">🎤</span>
-                <span className="text-lg">Blow into the microphone to blow out the candles</span>
+                <span className="text-sm md:text-lg">Blow into the microphone to blow out the candles</span>
               </div>
               {hasPermission === false && (
-                <p className="text-white bg-red-500 px-4 py-2 rounded-full font-bold shadow-lg text-sm">
+                <p className="text-white bg-red-500 px-4 py-2 rounded-full font-bold shadow-lg text-sm text-center">
                   Microphone access required to continue!
                 </p>
               )}
